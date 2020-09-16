@@ -1,9 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  StyleSheet, Text, View,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import shuffle from 'lodash/shuffle';
+import ThunderIconAnimated from './animation/ThunderIcon';
+import RainIconAnimated from './animation/RainIcon';
+import SnowIconAnimated from './animation/SnowIcon';
+import SunIconAnimated from './animation/SunIcon';
+import WindCloudIconAnimated from './animation/WindCloud';
+import SunCloudIconAnimated from './animation/SunCloudIcon';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +55,21 @@ const gradients = [
   ['#c2e59c', '#64b3f4'],
 ];
 
+const renderWeatherIcon = (condition) => {
+  if (condition === 'Thunderstorm') {
+    return <ThunderIconAnimated />;
+  } if (condition === 'Drizzle' || condition === 'Rain') {
+    return <RainIconAnimated />;
+  } if (condition === 'Snow') {
+    return <SnowIconAnimated />;
+  } if (condition === 'Clear') {
+    return <SunIconAnimated />;
+  } if (condition === 'Clouds') {
+    return <WindCloudIconAnimated />;
+  }
+  return <SunCloudIconAnimated />;
+};
+
 const Weather = ({ temp, condition, city }) => (
   <LinearGradient
     colors={shuffle(gradients)[0]}
@@ -55,7 +77,7 @@ const Weather = ({ temp, condition, city }) => (
   >
     <StatusBar style='light' />
     <View style={styles.half}>
-      <MaterialCommunityIcons name={iconName[condition] || 'weather-fog'} size={96} color='white' />
+      {renderWeatherIcon()}
       <Text style={styles.text}>
         {temp}
         º
