@@ -22,5 +22,7 @@ module.exports = {
     'react/jsx-filename-extension': ['off'],
     'import/no-unresolved': ['off'],
     'react/prop-types': ['off'],
+    'jsx-quotes': ['error', 'prefer-single'],
+    'react/style-prop-object': ['off'],
   },
 };
