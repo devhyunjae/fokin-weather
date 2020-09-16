@@ -15,7 +15,7 @@ const App = () => {
         const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=d33d09e9828067cf206834b39082d2a0&units=metric`);
         setWeatherData(data);
       } catch (error) {
-        Alert('Cannot find your current location');
+        Alert.alert('Cannot find your current location');
       }
     })();
   }, []);
