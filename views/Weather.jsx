@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,11 +14,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const Weather = ({ temp }) => (
+const Weather = ({ temp, condition }) => (
   <View style={styles.container}>
-    <Text style={styles.text}>
-      {temp}
-    </Text>
+    <View style={styles.container}>
+      <MaterialCommunityIcons name="smog" size={80} color="black" />
+      <Text style={styles.text}>
+        {temp}
+        º
+      </Text>
+    </View>
+    <View style={styles.container}>
+      <Text style={styles.text}>
+        {condition}
+      </Text>
+    </View>
   </View>
 );
 

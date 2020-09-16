@@ -65,7 +65,13 @@ const App = () => {
   }, []);
 
   return (
-    !weatherData ? <Loading /> : <Weather temp={Math.round(weatherData.main.temp)} />
+    !weatherData ? <Loading />
+      : (
+        <Weather
+          temp={Math.round(weatherData.main.temp)}
+          condition={weatherData.weather[0].main}
+        />
+      )
   );
 };
 
